@@ -100,7 +100,7 @@ var PPClient = {
     get_current_file: function(myFile, callback) {
     
         var req = new XMLHttpRequest();
-        req.open("GET", fileAndURL.url, true);
+        req.open("GET", myFile.url, true);
         req.responseType = "document";
         req.onload = function (e) {
             if (req.readyState === 4 && req.status === 200) {
