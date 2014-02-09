@@ -5,6 +5,9 @@ function simulatePPClient() {
     hickoryFarmsFile.sha = "9ec109f74bb3ed1f08c0289ffa79d6bcebdfa076";
     PPClient.get_new_and_old_file(hickoryFarmsFile, function(file) {
        
+       console.log(file.old);
+       console.log(file.current);
+       
         var diff = HtmlDiff.formatTextDiff(file.old, file.current);
         $('div#diff').append(diff);
     });
