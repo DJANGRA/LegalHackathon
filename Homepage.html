@@ -9,6 +9,7 @@
 <script type="text/javascript" src="HtmlDiff.js"></script>
 <script type="text/javascript" src="PPCheckerModule.js"></script>
 <script type="text/javascript" src="simulate.js"></script>
+<link href="bootstrap.css" rel="stylesheet" type="text/css">>
 <style>
 
 ins {
@@ -20,15 +21,21 @@ del {
     background-color: #ffc6c6;
 }
 
-img {
-    margin: -2950px 255px;
-}
-
 </style>
 </head>
 <body>
-
-<button onclick="simulatePPClient()">Simulate</button>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+      Demo Page
+  </div>
+  <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <button onclick="simulatePPClient()">Run</button>
+        </li>
+      </ul>
+   </ul>
+</nav>
 
 <div id="diff"></div>
 </body>
