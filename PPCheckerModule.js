@@ -49,6 +49,7 @@ var PPClient = {
     
     get_file: function (domain, filename, sha, callback) {
       
+      
         var req = new XMLHttpRequest();
         req.open("GET", this.content_url(domain, filename, sha), true);
         req.setRequestHeader("Accept", "application/vnd.github.VERSION.raw");
@@ -72,8 +73,8 @@ var PPClient = {
     get_commits_for_each_file: function(diffobject, callback) {
     
         diffobject.files.forEach(function(aFile) {
-        
-            PPClient.get_commits(domain, aFile.fileName, function(json) {
+            
+            PPClient.get_commits(domain, aFile.filename, function(json) {
                 if(json.length > 0) {       
                     aFile.sha = json[0].sha;
                     aFile.domain = domain;
@@ -84,8 +85,13 @@ var PPClient = {
         });
     },
     
-    get_new_and_old_file: function(aFile, callback) {        
-        PPClient.get_file(aFile.domain, aFile.fileName, aFile.sha, function(result) {
+    get_new_and_old_file: function(aFile, callback) { 
+        
+        console.log(aFile.domain);
+        console.log(aFile.filename);
+        console.log(aFile.sha);
+        
+        PPClient.get_file(aFile.domain, aFile.filename, aFile.sha, function(result) {
             myFile.old = result;
             PPClient.get_current_file(aFile, callback);      
         });
