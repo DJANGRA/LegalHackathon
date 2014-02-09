@@ -5,6 +5,6 @@ function simulatePPClient() {
     PPClient.get_new_and_old_file(hickoryFarmsFile, function(file) {
        
         var diff = HtmlDiff.formatTextDiff(file.old, file.current);
-        $(#diff).append(diff);
+        $('div#diff').append(diff);
     });
 }
