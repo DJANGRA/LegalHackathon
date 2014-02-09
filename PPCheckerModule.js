@@ -1,4 +1,3 @@
-
 function PPDiffObject(domain, lastUpdated) {
     this.domain = domain;
     this.lastUpdated = lastUpdated;
@@ -16,7 +15,7 @@ function DiffFile(domain, filename, url) {
     this.head = null;
 }
 
-/* A Client module for interacting with the TOSDR repo to get commits from files */
+/* A Client module for interacting with the TOSDR github repo to get commits from files */
 
 var PPClient = {
     
@@ -36,10 +35,11 @@ var PPClient = {
         req.open("GET", this.commits_url(domain, filename), true);
         req.onload = function (e) {
             if (req.readyState === 4 && req.status === 200) {
-                callback(req.responseText);
+                //send a parsed json object as
+                callback(JSON.parse(req.responseText));
             }
             else {
-                    console.error(req.statusText);
+                console.error(req.statusText);
             }
         };
         
@@ -112,7 +112,11 @@ var PPClient = {
     },
 };
 
-/* Pass in a PPDiffObject and populate it, triggering the completion handler when done, passing back the 
+
+/* Simulation function purely for testing purposes */
+
+
+/* Pass in a PPDiffObject and populate the files array from a locally stored xml rules file, triggering the completion handler when done, passing back the 
 diff_object */
 
 function populateObject(diff_object, completionHandler) {
@@ -139,8 +143,9 @@ function populateObject(diff_object, completionHandler) {
     
     xmlHttpRequest.send(null);
 }
-    
-/* Request a PPDiffObject.  
+
+/*
+/  Request a PPDiffObject.  
 /  First check the localstorage for object where formatted as <key>:<last_updated>,<track_integer>
 /  If object exists, callback passing the object
 /  Else, check a pre-populated array for the domain name.  
