@@ -118,13 +118,13 @@ var PPClient = {
 
 /* Pass in a PPDiffObject and populate the files array from a locally stored xml rules file, triggering the completion handler when done, passing back the 
 diff_object */
-
+/* TO DO
 function populateObject(diff_object, completionHandler) {
     
     var req = new XMLHttpRequest();
     var resource = 'rules/' + domain + '.xml';
     req.responseType = "document";
-    xmlHttpRequest.open("GET",  chrome.extension.getURL(resource), true);
+    xmlHttpRequest.open("GET",  chrome.extension.getURL(resource, true));
     xmlHttpRequest.onreadystatechange = function(e) {
         
         var files = req.responseXML.getElementsByTagName("docname");
@@ -151,7 +151,7 @@ function populateObject(diff_object, completionHandler) {
 /  Else, check a pre-populated array for the domain name.  
 /  If domain name exists, pass an object with last_updated = today and track_integer = 0.  (Otherwise don't do anything)
 */
-
+/*TODO
 function requestPPDiffObject(domain, completionHandler) {
     
     //first ask local storage if the object exists
@@ -166,7 +166,7 @@ function requestPPDiffObject(domain, completionHandler) {
         
         else {
         
-            var trackable_sites = ["www.amazon.com","www.google]; //list trackable sites in an array
+            var trackable_sites = ["www.amazon.com","www.google.com"]; //list trackable sites in an array
             
             if(trackable_sites.indexOf(domain) != -1) {
             
@@ -179,5 +179,4 @@ function requestPPDiffObject(domain, completionHandler) {
             } 
         
     });
-}
-    
+}*/
