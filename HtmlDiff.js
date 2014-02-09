@@ -1,4 +1,3 @@
-
 /*This library is released under the MIT license*/
 
 HtmlDiff = {
@@ -174,7 +173,7 @@ HtmlDiff = {
             return _results;
           })();
           equals = [];
-          intersected = _.reject(_.intersect(deletedParts, insertedParts), function(elem) {
+          intersected = _.reject(_.intersection(deletedParts, insertedParts), function(elem) {
             return elem.match(/^\s+$/);
           });
           if (intersected.length > 0) {
