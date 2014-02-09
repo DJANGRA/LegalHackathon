@@ -6,7 +6,7 @@ function PPDiffObject(domain, lastUpdated) {
 }
 
 function DiffFile(domain, filename, url) {
-    this.filename = file;
+    this.filename = filename;
     this.url = url;
     this.domain = domain;
     this.sha = null;
