@@ -98,7 +98,7 @@ var PPClient = {
         var date = new Date();
         var formatted_date = date.toISOString();
         var req = new XMLHttpRequest();
-        req.open("GET", this.commits_url(domain, filename, formatted_date), true);
+        req.open("GET", this.commits_url(myFile.domain, myFile.filename, formatted_date), true);
         req.onload = function (e) {
             if (req.readyState === 4 && req.status === 200) {
                 //send a parsed json object as
