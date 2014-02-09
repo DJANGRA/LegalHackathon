@@ -29,10 +29,10 @@ var PPClient = {
     },
     
     /** GET request for commits */
-    get_commits: function (domain, filename, callback) {
+    get_commits: function (domain, filename, lastUpdated, callback) {
         
         var req = new XMLHttpRequest();
-        req.open("GET", this.commits_url(domain, filename), true);
+        req.open("GET", this.commits_url(domain, filename, lastUpdated), true);
         req.onload = function (e) {
             if (req.readyState === 4 && req.status === 200) {
                 //send a parsed json object as
@@ -87,10 +87,6 @@ var PPClient = {
     
     get_new_and_old_file: function(aFile, callback) { 
         
-        console.log(aFile.domain);
-        console.log(aFile.filename);
-        console.log(aFile.sha);
-        
         PPClient.get_file(aFile.domain, aFile.filename, aFile.sha, function(result) {
             aFile.old = result;
             PPClient.get_current_file(aFile, callback);      
@@ -99,6 +95,33 @@ var PPClient = {
     
     get_current_file: function(myFile, callback) {
     
+        var date = new Date();
+        var formatted_date = date.toISOString();
+        var req = new XMLHttpRequest();
+        req.open("GET", this.commits_url(domain, filename, formatted_date), true);
+        req.onload = function (e) {
+            if (req.readyState === 4 && req.status === 200) {
+                //send a parsed json object as
+                var json = JSON.parse(req.responseText);
+                
+                if(json.length > 0) {      
+                    
+                    PPClient.get_file(myFile.domain, myFile.filename, json[0].sha, function(response) {
+                        
+                          myFile.current = response;
+                          callback(myFile);
+                        
+                    });
+                }
+                
+            }
+            else {
+                console.error(req.statusText);
+            }
+        };
+        
+        
+        
         var req = new XMLHttpRequest();
         req.open("GET", myFile.url, true);
         req.responseType = "document";
