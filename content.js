@@ -1,7 +1,6 @@
 window.onload= function () {
     
     var domain = document.location.hostname;
-    //get domain name out of regex
     
     chrome.notifications.onButtonClicked.addListener(function(notificationId,buttonIndex) {
             
