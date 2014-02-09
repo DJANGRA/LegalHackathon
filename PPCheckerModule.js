@@ -120,23 +120,6 @@ var PPClient = {
             }
         };
         
-        
-        
-        var req = new XMLHttpRequest();
-        req.open("GET", myFile.url, true);
-        req.responseType = "document";
-        req.onload = function (e) {
-            if (req.readyState === 4 && req.status === 200) {
-                aFile.current = req.responseXML.body;
-                aFile.head = req.responeXML.head;
-                callback(aFile);
-            }
-              
-            else {
-                console.error(req.statusText);
-            }
-        };
-        
         req.send();
     },
 };
