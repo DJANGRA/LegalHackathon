@@ -92,7 +92,7 @@ var PPClient = {
         console.log(aFile.sha);
         
         PPClient.get_file(aFile.domain, aFile.filename, aFile.sha, function(result) {
-            myFile.old = result;
+            aFile.old = result;
             PPClient.get_current_file(aFile, callback);      
         });
     },
