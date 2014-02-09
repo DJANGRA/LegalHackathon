@@ -1,4 +1,3 @@
-
 function PPDiffObject(domain, lastUpdated) {
     this.domain = domain;
     this.lastUpdated = lastUpdated;
@@ -26,7 +25,7 @@ var PPClient = {
     },
     
     content_url: function (domain, filename, sha) {
-        return 'https://api.github.com/repos/tosdr/tosback2/contents/crawl/' + domain '/' + filename + '?ref=' + sha;
+        return 'https://api.github.com/repos/tosdr/tosback2/contents/crawl/' + domain + '/' + filename + '?ref=' + sha;
     },
     
     /** GET request for commits */
