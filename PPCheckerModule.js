@@ -1,3 +1,5 @@
+
+
 function PPDiffObject(domain, lastUpdated) {
     this.domain = domain;
     this.lastUpdated = lastUpdated;
@@ -15,7 +17,7 @@ function DiffFile(domain, filename, url) {
     this.head = null;
 }
 
-/* A Client module for interacting with the TOSDR github repo to get commits from files */
+/* A Client module for interacting with the TOSDR github repo and the privacy policies of different sites*/
 
 var PPClient = {
     
